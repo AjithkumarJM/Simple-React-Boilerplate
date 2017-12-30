@@ -8,22 +8,56 @@ export default class Dashboard extends Component {
 
     render() {
         return (
-            <div className="col-md-3">
-                <div className="card text-center">
-                    <div className="card-header redBg">
-                        Analytics
+            <div className='row'>
+                <div className="col-md-3">
+                    <div className="card text-center">
+                        <div className="card-header redBg">
+                            Analytics
                 </div>
-                    <div className="card-body">
-                        {/* <Link to={{
-                            pathname: '/duplicateReview',
-                            state: { value: 'Duplicate Review', name: 'DUPLICATE_REVIEW' }
-                        }}>
-                            <h4 className="card-title">{this.state.dashboardData.Duplicate_Review}</h4>
-                            <h6 className="card-title">(Dispute ${this.state.dashboardData.Duplicate_Review_Dispute > 0 ? this.state.dashboardData.Duplicate_Review_Dispute.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : this.state.dashboardData.Duplicate_Review_Dispute})</h6>
-                        </Link> */}
+                        <div className="card-body">
+                            <h4 className="card-title">$ 44</h4>
+                            <h6 className="card-title">Disputes</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-md-3">
+                    <div className="card text-center">
+                        <div className="card-header redBg">
+                            Analytics
+                </div>
+                        <div className="card-body">
+                            <h4 className="card-title">$ 44</h4>
+                            <h6 className="card-title">Disputes</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-md-3">
+                    <div className="card text-center">
+                        <div className="card-header redBg">
+                            Analytics
+                </div>
+                        <div className="card-body">
+                            <h4 className="card-title">$ 44</h4>
+                            <h6 className="card-title">Disputes</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-md-3">
+                    <div className="card text-center">
+                        <div className="card-header redBg">
+                            Analytics
+                </div>
+                        <div className="card-body">
+                            <h4 className="card-title">$ 44</h4>
+                            <h6 className="card-title">Disputes</h6>
+                        </div>
                     </div>
                 </div>
             </div>
+
         )
     }
 }

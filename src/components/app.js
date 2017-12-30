@@ -26,7 +26,7 @@ export default class App extends Component {
                             <Header />
                             <div className='topBodyWrap'>
                                 <div className='equalPadding'>
-                                    <div className='topWrap'>
+                                    <div className=''>
                                         {this.renderMenu()}
                                     </div>
                                 </div>
