@@ -12,6 +12,7 @@ class Login extends Component {
             loginError: false
         };
     }
+
     generateInput(field){
         return(
             <div className="form-group">
@@ -25,6 +26,7 @@ class Login extends Component {
             </div>
         )
     }
+    
     loggin(values) {
         // this.props.login(values, (response)=>{
             // cookie.save('session', response.data, {path: '/'});
