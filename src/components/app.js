@@ -20,13 +20,13 @@ export default class App extends Component {
     render() {
         if (this.state.isSession) {
             return (
-                <div>
+                <div className=''>
                     <BrowserRouter>
                         <div>
                             <Header />
                             <div className='topBodyWrap'>
                                 <div className='equalPadding'>
-                                    <div className=''>
+                                    <div>
                                         {this.renderMenu()}
                                     </div>
                                 </div>
