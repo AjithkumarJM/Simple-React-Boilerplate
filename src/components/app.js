@@ -7,9 +7,9 @@ import Login from './login';
 
 export default class App extends Component {
 
-    componentWillMount() {
-        this.state = { isSession: cookie.load('session') }
-    }
+    // componentWillMount() {
+    //     this.setState({ isSession: cookie.load('session') })
+    // }
 
     renderMenu() {
         return (
@@ -18,26 +18,27 @@ export default class App extends Component {
     }
 
     render() {
-        if (this.state.isSession) {
-            return (
-                <div className=''>
-                    <BrowserRouter>
-                        <div>
-                            <Header />
-                            <div className='topBodyWrap'>
-                                <div className='equalPadding'>
-                                    {this.renderMenu()}
-                                </div>
+        // if (this.state.isSession) {
+        return (
+            <div>
+                <BrowserRouter>
+                    <div>
+                        <Header />
+                        <div className='topBodyWrap'>
+                            <div className='equalPadding'>
+                                {this.renderMenu()}
                             </div>
                         </div>
-                    </BrowserRouter>
-                </div>
-            );
-        } else
-            return (
-                <div>
-                    <Login />
-                </div>
-            );
+                    </div>
+                </BrowserRouter>
+            </div>
+        );
+        //     } else
+        //         return (
+        //             <div>
+        //                 <Login />
+        //             </div>
+        //         );
+        // }
     }
 }

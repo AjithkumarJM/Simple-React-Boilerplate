@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import cookie from 'react-cookies';
 
 export default class Header extends Component {
-    logout() {
-        cookie.remove('session', { path: '/' });
-        window.location.href = '/';
-    }
+
+    // logout() {
+    //     cookie.remove('session', { path: '/' });
+    //     window.location.href = '/';
+    // }
 
     render() {
         return (
             <header>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light headerShadow">
                     {/* <a className="navbar-brand" href="#">Navbar w/ text</a> */}
-                    <img src="/src/assets/images/logo.png" width="100" height="35" alt="ems jaishu" />
+                    <img src="/src/assets/images/googleLogo.png" width="30" height="30" alt="ems jaishu" />
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
