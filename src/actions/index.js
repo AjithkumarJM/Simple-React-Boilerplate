@@ -2,14 +2,10 @@ import axios from 'axios';
 import { stringify } from 'query-string';
 import cookie from 'react-cookies';
 
-const ROOT_URL = "http://192.168.1.19:81/api/v1/"; // Local Dev URL
-let refresh_flag = 0;
-
-function getToken() {
-    return cookie.load('session');
-}
+const ROOT_URL = "http://jsonplaceholder.typicode.com/users"; // Local Dev URL
 
 function API_CALL(method, url, data, type, callback, file) {
+    console.log("Calling API for the method of " + method + " : " + ROOT_URL + url);
     // axios.interceptors.response.use(undefined, function (err) {
     //     if (refresh_flag == 0) {
     //         refresh_flag = 1;
@@ -35,56 +31,39 @@ function API_CALL(method, url, data, type, callback, file) {
     //     }
     //     throw err;
     // });
-    let respon;
+    let request;
     if (callback) {
-        respon = axios({
-            method,
-            url: ROOT_URL + url,
-            data,
-            headers: {
-                Authorization: 'Bearer ' + getToken().access_token
-            },
-            responseType: file ? 'arraybuffer' : 'json'
-        }).then((data) => callback(data));
+        return (dispatch) => {
+            request = axios({
+                method,
+                url: ROOT_URL + url,
+                data,
+                headers: {
+                    Authorization: 'Bearer ' // + getToken().access_token
+                },
+                requestseType: file ? 'arraybuffer' : 'json'
+            }).then((data) => callback(data));
+        }
     } else {
-        respon = axios({
-            method,
-            url: ROOT_URL + url,
-            data,
-            headers: {
-                Authorization: 'Bearer ' + getToken().access_token
-            }
-        });
+        return (dispatch) => {
+            request = axios({
+                method,
+                url: ROOT_URL + url,
+                data,
+                headers: {
+                    Authorization: 'Bearer ' // + getToken().access_token
+                }
+            }).then(({ data }) => {
+                dispatch({ type: type, payload: data })
+            })
+        }
     }
-    console.log("Calling API for the method of " + method + " : " + ROOT_URL + url);
-    return {
-        type,
-        payload: respon
-    }
 }
 
-export function login(values, callback, errorHandler) {
-    values.grant_type = 'password';
-    let response = axios.post(ROOT_URL + 'login', stringify(values))
-        .then((data) => callback(data))
-        .catch((data) => errorHandler(data));
-    return {
-        type: 'LOGIN',
-        payload: response
-    };
+export function sampleCallbackCall(callback) {
+    return API_CALL('get', '', null, 'SAMPLE_CALLBACK', callback)
 }
 
-// Header Action - Starts
-
-export function getUserDetails() {
-    let payload = {
-        token: getToken().access_token
-    };
-    return API_CALL('post', 'me', payload, 'GET_ME');
-}
-
-// Header Action - Ends
-
-export function getSampleData(callback) {
-    return API_CALL('get', 'holiday/list', null, 'sample_data', callback)
+export function sampleReducerCall() {
+    return API_CALL('get', '', null, 'SAMPLE_CALL')
 }
